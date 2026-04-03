@@ -13,7 +13,7 @@ echo "github token set"
 git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 echo "git config set"
 
-sh -c "$(curl -fsLS get.chezmoi.io)"
+sh -c "$(curl -fsLS get.chezmoi.io/lb)"
 echo "chezmoi installed"
 
 
