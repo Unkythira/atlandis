@@ -4,7 +4,7 @@ sudo apt-get install -y age > /dev/null 2>&1
 echo "age installed"
 
 useradd -m dev && passwd dev
-usermod -aG dev
+usermod -aG sudo dev
 echo "dev created and assigned to sudo"
 
 export GITHUB_TOKEN=$(age -d ./atlandis/github_pat.age)
