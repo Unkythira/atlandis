@@ -1,12 +1,13 @@
 #!/bin/bash
-sudo apt-get install -y age curl > /dev/null 2>&1
+
+export DEBIAN_FRONTEND=noninteractive
+
+sudo apt-get install -y age curl sudo > /dev/null 2>&2
 echo "age installed"
 
 # ./atlandis/github_pat.age
-if [[ -zn "$GITHUB_PATH_1" ]]; then
-  export GITHUB_TOKEN=$(age -d $GITHUB_PATH_1)
-  echo "github token set"
-fi
+export GITHUB_TOKEN=$(age -d $GITHUB_PATH_1)
+echo "github token set"
 
 git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 echo "git config set"
