@@ -2,7 +2,7 @@
 
 export DEBIAN_FRONTEND=noninteractive
 
-sudo apt-get install -y age curl sudo > /dev/null 2>&2
+apt-get install -y age curl sudo > /dev/null 2>&2
 echo "age installed"
 
 # ./atlandis/github_pat.age
