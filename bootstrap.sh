@@ -1,23 +1,28 @@
 #!/bin/bash
 
+set -e
 export DEBIAN_FRONTEND=noninteractive
 
-read -sp "Github username: " GITHUB_USERNAME && echo
-read -sp "Github repo: " GITHUB_REPO && echo
-GITHUB_PATH_1=./"$GITHUB_REPO"/github_pat.age
+read -s "Github username: " GH_USER
+echo "1. $GH_USER"
+read -s "Github repo name: " GH_REPO
+echo "2. $GH_REPO"
 
-sudo apt-get install -y age curl > /dev/null 2>&1
-echo "age installed"
+SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
+echo "3. $SCRIPT_DIR"
+PAT_FILE="$SCRIPT_DIR"/github_pat.age
+echo "4. $SCRIPT_DIR"
 
-# ./atlandis/github_pat.age
-GITHUB_TOKEN=$(age -d $GITHUB_PATH_1)
-echo "github token set"
+sudo apt-get update -qq
+sudo apt-get install -y age curl >/dev/null
+
+GITHUB_TOKEN=$(age -d "$PAT_FILE")
+echo "5. $GITHUB_TOKEN"
 
 git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
-echo "git config set"
+echo "6. git config set"
 
 sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
-echo "chezmoi installed"
+echo "7. chezmoi installed"
 
-chezmoi init --apply $GITHUB_USERNAME
-
+chezmoi init --apply "$GH_USER/$GH_REPO"
