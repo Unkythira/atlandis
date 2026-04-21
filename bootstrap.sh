@@ -7,7 +7,7 @@ SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 PAT_FILE="$SCRIPT_DIR"/github_pat.age
 
 sudo apt-get update -qq
-sudo apt-get install -y age curl >/dev/null
+sudo apt-get install -y age curl sudo >/dev/null
 
 GITHUB_TOKEN=$(age -d "$PAT_FILE")
 
