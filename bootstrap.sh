@@ -22,7 +22,7 @@ echo "5. $GITHUB_TOKEN"
 git config --global url."https://${GITHUB_TOKEN}@github.com/".insteadOf "https://github.com/"
 echo "6. git config set"
 
-sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
+sudo sh -c "$(curl -fsLS get.chezmoi.io)" -- -b /usr/local/bin
 echo "7. chezmoi installed"
 
 chezmoi init --apply "$GH_USER/$GH_REPO"
