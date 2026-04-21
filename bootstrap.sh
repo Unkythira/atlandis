@@ -3,9 +3,9 @@
 set -e
 export DEBIAN_FRONTEND=noninteractive
 
-read -s "Github username: " GH_USER
+read -rp "Github username: " GH_USER
 echo "1. $GH_USER"
-read -s "Github repo name: " GH_REPO
+read -rp "Github repo name: " GH_REPO
 echo "2. $GH_REPO"
 
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
